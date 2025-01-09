@@ -1,6 +1,6 @@
 {
   "name": "@riesenia/fe-configs",
-  "version": "1.0.2",
+  "version": "2.0.1",
   "description": "Frontend configuration files (prettier, stylelint, eslint..)",
   "main": "index.js",
   "scripts": {
@@ -18,11 +18,20 @@
   },
   "homepage": "https://github.com/riesenia/fe-configs#readme",
   "dependencies": {
+    "@eslint/js": "^9.17.0",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "eslint-plugin-vue": "^9.32.0",
+    "globals": "^15.14.0",
     "prettier": "^3.3.3",
     "stylelint": "^16.6.1",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-recess-order": "^5.1.0",
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-order": "^6.0.4"
+  },
+  "engines": {
+    "node": ">=18.18.0"
   }
 }
