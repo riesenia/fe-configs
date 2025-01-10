@@ -29,11 +29,14 @@ module.exports = [
         },
 
         rules: {
+            // Allow single word vue component names
+            "vue/multi-word-component-names": "off",
+
             "no-unused-vars": "off",
             // Add rules for unused-imports
             "unused-imports/no-unused-imports": "error",
             "unused-imports/no-unused-vars": [
-                "warn",
+                "error",
                 {
                     vars: "all",
                     varsIgnorePattern: "^_", // Ignore variables starting with _
