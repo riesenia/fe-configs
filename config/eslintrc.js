@@ -3,47 +3,66 @@ const vue = require("eslint-plugin-vue");
 const prettier = require("eslint-config-prettier");
 const unusedImports = require("eslint-plugin-unused-imports");
 const globals = require("globals");
+const tsEslint = require("typescript-eslint");
+const vueEslintParser = require("vue-eslint-parser");
 
-module.exports = [
-    // Core ESLint recommended rules
-    js.configs.recommended,
+export default [
+  // Core ESLint recommended rules
+  js.configs.recommended,
 
-    // Vue.js specific linting rules
-    ...vue.configs["flat/recommended"],
+  // Vue.js specific linting rules
+  ...vue.configs["flat/recommended"],
 
-    // Prettier configuration to disable conflicting rules
-    prettier,
+  // Typescript rules
+  ...tsEslint.configs.recommended,
+  tsEslint.configs.eslintRecommended, // To disable same rules which are in @eslint/js
 
-    // Plugins and additional rules
-    {
-        plugins: {
-            "unused-imports": unusedImports,
-        },
+  // Prettier configuration to disable conflicting rules
+  prettier,
 
-        languageOptions: {
-            ecmaVersion: 2022,
-            globals: {
-                ...globals.browser,
-                ...globals.node,
-            },
-        },
-
-        rules: {
-            // Allow single word vue component names
-            "vue/multi-word-component-names": "off",
-
-            "no-unused-vars": "off",
-            // Add rules for unused-imports
-            "unused-imports/no-unused-imports": "error",
-            "unused-imports/no-unused-vars": [
-                "error",
-                {
-                    vars: "all",
-                    varsIgnorePattern: "^_", // Ignore variables starting with _
-                    args: "after-used",
-                    argsIgnorePattern: "^_", // Ignore arguments starting with _
-                },
-            ],
-        },
+  // Plugins and additional rules
+  {
+    files: ["**/*.{js,ts,vue}"],
+    plugins: {
+      "unused-imports": unusedImports,
     },
+
+    languageOptions: {
+      parser: vueEslintParser,
+      parserOptions: {
+        parser: tsEslint.parser,
+        extraFileExtensions: [".vue"],
+        project: true,
+        tsconfigRootDir: __dirname,
+      },
+      ecmaVersion: 2022,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+
+    rules: {
+      // Allow single word vue component names
+      "vue/multi-word-component-names": "off",
+
+      "no-unused-vars": "off",
+      // Add rules for unused-imports
+      "unused-imports/no-unused-imports": "error",
+      "unused-imports/no-unused-vars": [
+        "error",
+        {
+          vars: "all",
+          varsIgnorePattern: "^_", // Ignore variables starting with _
+          args: "after-used",
+          argsIgnorePattern: "^_", // Ignore arguments starting with _
+        },
+      ],
+    },
+  },
+  {
+    // disable type-aware linting on JS files
+    files: ["**/*.js"],
+    extends: [tsEslint.configs.disableTypeChecked],
+  },
 ];
