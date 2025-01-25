@@ -35,5 +35,9 @@
   },
   "engines": {
     "node": ">=18.18.0"
+  },
+  "devDependencies": {
+    "@vitest/eslint-plugin": "^1.1.25",
+    "eslint-plugin-cypress": "^4.1.0"
   }
 }

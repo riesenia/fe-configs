@@ -5,6 +5,8 @@ const unusedImports = require("eslint-plugin-unused-imports");
 const globals = require("globals");
 const tsEslint = require("typescript-eslint");
 const vueEslintParser = require("vue-eslint-parser");
+const eslintVitest = require("@vitest/eslint-plugin");
+const eslintCypress = require("eslint-plugin-cypress/flat");
 
 export default [
   // Core ESLint recommended rules
@@ -60,9 +62,28 @@ export default [
       ],
     },
   },
+
   {
     // disable type-aware linting on JS files
     files: ["**/*.js"],
     extends: [tsEslint.configs.disableTypeChecked],
+  },
+
+  {
+    // Vitest eslint for unit tests
+    files: ["**/*.spec.ts"],
+    languageOptions: {
+      ...eslintVitest.environments.env,
+    },
+    ...eslintVitest.configs.recommended,
+  },
+
+  {
+    // Cypress eslint for e2e tests
+    files: ["**/*.e2e.ts", "**/*.cy.ts"],
+    languageOptions: {
+      ...eslintCypress.configs.globals,
+    },
+    ...eslintCypress.configs.recommended,
   },
 ];
