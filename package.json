@@ -1,6 +1,6 @@
 {
   "name": "@riesenia/fe-configs",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Frontend configuration files (prettier, stylelint, eslint..)",
   "main": "index.js",
   "scripts": {
