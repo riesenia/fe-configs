@@ -1,4 +1,6 @@
-## [2.1.0] - 2025-07-14
+## [3.0.0] - 2025-07-14
+### Breaking Changes
+- Dropped support require, using import instead
 ### Features
 - added support for typescript
 - added support for vitest and cypress tests
