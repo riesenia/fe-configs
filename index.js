@@ -1,5 +1,5 @@
-import baseEslintConfig from "./config/eslintrc";
-import basePrettierConfig from "./config/prettierrc";
-import baseStylelintConfig from "./config/stylelintrc";
+import baseEslintConfig from "./config/eslintrc.js";
+import basePrettierConfig from "./config/prettierrc.js";
+import baseStylelintConfig from "./config/stylelintrc.js";
 
 export {baseEslintConfig, basePrettierConfig, baseStylelintConfig};
