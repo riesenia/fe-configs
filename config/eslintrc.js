@@ -35,7 +35,7 @@ export default [
         parser: tsEslint.parser,
         extraFileExtensions: [".vue"],
         project: true,
-        tsconfigRootDir: __dirname,
+        tsconfigRootDir: ".",
       },
       ecmaVersion: 2022,
       globals: {
