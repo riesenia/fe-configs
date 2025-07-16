@@ -1,12 +1,12 @@
-const js = require("@eslint/js");
-const vue = require("eslint-plugin-vue");
-const prettier = require("eslint-config-prettier");
-const unusedImports = require("eslint-plugin-unused-imports");
-const globals = require("globals");
-const tsEslint = require("typescript-eslint");
-const vueEslintParser = require("vue-eslint-parser");
-const eslintVitest = require("@vitest/eslint-plugin");
-const eslintCypress = require("eslint-plugin-cypress/flat");
+import js from "@eslint/js";
+import vue from "eslint-plugin-vue";
+import prettier from "eslint-config-prettier";
+import unusedImports from "eslint-plugin-unused-imports";
+import globals from "globals";
+import tsEslint from "typescript-eslint";
+import vueEslintParser from "vue-eslint-parser";
+import eslintVitest from "@vitest/eslint-plugin";
+import eslintCypress from "eslint-plugin-cypress/flat";
 
 export default [
   // Core ESLint recommended rules
@@ -35,7 +35,7 @@ export default [
         parser: tsEslint.parser,
         extraFileExtensions: [".vue"],
         project: true,
-        tsconfigRootDir: __dirname,
+        tsconfigRootDir: ".",
       },
       ecmaVersion: 2022,
       globals: {
@@ -65,8 +65,8 @@ export default [
 
   {
     // disable type-aware linting on JS files
+    ...tsEslint.configs.disableTypeChecked,
     files: ["**/*.js"],
-    extends: [tsEslint.configs.disableTypeChecked],
   },
 
   {
