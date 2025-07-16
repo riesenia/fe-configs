@@ -1,3 +1,7 @@
+## [3.0.2] - 2025-07-16
+### Fixes
+- fixed eslintrc.js
+
 ## [3.0.1] - 2025-07-16
 ### Features
 - type module in package.json
