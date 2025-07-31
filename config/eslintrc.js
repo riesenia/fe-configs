@@ -59,6 +59,7 @@ export default [
           vars: "all",
           varsIgnorePattern: "^_", // Ignore variables starting with _
           args: "after-used",
+          argsIgnorePattern: "^_",
         },
       ],
       "@typescript-eslint/no-unused-vars": [

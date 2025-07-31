@@ -1,3 +1,7 @@
+## [3.0.4] - 2025-07-31
+### Features
+- fixed argsIgnorePattern that allows arguments starting with _
+
 ## [3.0.3] - 2025-07-25
 ### Features
 - changed v-html as warning
